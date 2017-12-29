@@ -6,4 +6,5 @@ app.use(ctx => {
     ctx.body = 'Hello Koa';
 });
 app.listen(3000);
+console.log('app start at 3000');
 //# sourceMappingURL=app.js.map
