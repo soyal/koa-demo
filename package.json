@@ -4,21 +4,39 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "tsc && node dist/app.js"
   },
   "author": "",
   "license": "ISC",
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  },
   "dependencies": {
     "@types/koa": "^2.0.43",
     "koa": "^2.4.1"
   },
   "devDependencies": {
+    "@types/jest": "^22.2.0",
     "eslint": "^4.14.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-prettier": "^2.4.0",
+    "jest": "^22.4.2",
     "prettier": "1.9.2",
+    "regenerator-runtime": "^0.11.1",
+    "ts-jest": "^22.4.1",
     "ts-node": "^5.0.0",
     "tsc": "^1.20150623.0",
     "typescript": "^2.6.2"
