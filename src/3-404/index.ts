@@ -2,7 +2,7 @@ import Koa = require('koa')
 
 const app = new Koa()
 
-export const middleware = async (ctx: Koa.Context) => {
+const middleware = async (ctx: Koa.Context) => {
   ctx.status = 404
 
   switch (ctx.accepts(['html', 'json'])) {
@@ -24,6 +24,6 @@ export const middleware = async (ctx: Koa.Context) => {
 
 app.use(middleware)
 
-app.listen(3000)
+const server = app.listen(3000)
 
-export default app
+export default server

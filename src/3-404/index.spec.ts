@@ -1,9 +1,14 @@
 import Koa = require('koa')
-import app, { middleware } from './index'
-import http = require('http')
+import server from './index'
+import supertest = require('supertest')
+const request = supertest.agent(server)
+
+afterEach(() => {
+  server.close()
+})
 
 test('404', async () => {
-  const ctx = new Koa.Context()
-
-  middleware(ctx)
+  const response = await request.get('/').set('Accept', 'application/json')
+  expect(response.status).toBe(404)
+  expect(response.body.message).toBe('Page Not Found')
 })
