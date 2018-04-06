@@ -26,7 +26,8 @@
   "dependencies": {
     "@types/koa": "^2.0.43",
     "koa": "^2.4.1",
-    "koa-basic-auth": "^2.0.0"
+    "koa-basic-auth": "^2.0.0",
+    "koa-compose": "^4.0.0"
   },
   "devDependencies": {
     "@types/jest": "^22.2.0",
