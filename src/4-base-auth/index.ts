@@ -4,7 +4,6 @@ import auth = require('koa-basic-auth')
 const app = new Koa()
 
 app.use(async (ctx, next) => {
-  console.log(1)
   try {
     await next()
   } catch (e) {
@@ -18,15 +17,24 @@ app.use(async (ctx, next) => {
   }
 })
 
+/**
+ * auth方法会截取ctx.headers.authorization与传入的name, pass作对比
+ * 请参考http basic auth
+ * 首次发起请求，不含name, pass，server 返回401，浏览器弹出用户名密码输入框
+ * 输入后，再次发送请求，跟上一步一致
+ */
 // set user key
 app.use(auth({ name: 'soyal', pass: '123' }))
 
 // response secret
 app.use(async (ctx, next) => {
   await next()
-  ctx.body = 'secret'
+  ctx.body = 'secret content'
 })
 
-const server = app.listen(3000)
 
-export default server
+if(!module.parent) {
+  app.listen(3000)
+}
+
+export default app
